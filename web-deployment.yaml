@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  namespace: web-visit-count
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      volumes:
+#        - name: web-pv-storage
+#          persistentVolumeClaim:
+#            claimName: web-pv-claim
+        - name: web-pv-storage-nfs
+          persistentVolumeClaim:
+            claimName: web-pv-claim-nfs
+      containers:
+        - name: web-visit-count
+          image: fefefe8888/web-visit-count-local:1.0
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+#            - mountPath: "/pv-data"
+#              name: web-pv-storage
+            - mountPath: "/pv-data-nfs"
+              name: web-pv-storage-nfs
