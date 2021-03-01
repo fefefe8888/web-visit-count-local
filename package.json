@@ -1,6 +1,6 @@
 {
    "dependencies":  {
-      "express": "^4.16.4",
+      "express": "4.14.x",
       "redis": "^2.8.0"
    },
    "scripts": {
