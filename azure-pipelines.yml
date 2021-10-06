@@ -11,19 +11,16 @@ pool:
 
 variables:
   imageName: 'web-visit-count-local'
-  PCUSER: ''
-  PCPASS: ''
-  PC_CONSOLE: ''
 
 steps:
-- task: Docker@2
-  displayName: Build an image
-  inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: Dockerfile
+#- task: Docker@2
+#  displayName: Build an image
+#  inputs:
+#    repository: $(imageName)
+#    command: build
+#    Dockerfile: Dockerfile
 
 - task: Bash@3
   inputs:
     targetType: inline
-    script: curl -s -k -u $PCUSER:$PCPASS $PC_CONSOLE/api/v1/util/twistcli -v -o twistcli;chmod +x twistcli
+    script: curl -s -k -u $(PCUSER):$(PCPASS) $(PC_CONSOLE)/api/v1/util/twistcli -v -o twistcli;chmod +x twistcli
