@@ -27,7 +27,7 @@ steps:
     script: curl -k -u $(PCUSER):$(PCPASS) $(PC_CONSOLE)/api/v1/util/twistcli -v -o twistcli;chmod +x twistcli
 
 - task: Bash@3
-  displayName: Scan image - $(imageName)
+  displayName: Scan image - $(imageName):$(Build.BuildId)
   inputs:
     targetType: inline
     script: |
