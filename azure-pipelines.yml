@@ -31,4 +31,4 @@ steps:
   inputs:
     targetType: inline
     script: |
-      ./twistcli images scan "$(imageName):$(Build.BuildId) --address $(PC_CONSOLE) -u $(PCUSER) -p $(PCPASS) --details
+      ./twistcli images scan $(imageName):$(Build.BuildId) --address $(PC_CONSOLE) -u $(PCUSER) -p $(PCPASS) --details
